@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15"
+      xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.university.StudentController">
+
+    <padding>
+        <Insets top="15" right="15" bottom="15" left="15"/>
+    </padding>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Student Management" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <ProgressIndicator fx:id="loadingSpinner" prefWidth="24" prefHeight="24" visible="false"/>
+        <Button text="Refresh" onAction="#handleRefresh"/>
+    </HBox>
+
+    <!-- Input Form (Week 8 Reactive Validation) -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="regField" promptText="Reg Number (e.g. S103)" prefWidth="150"/>
+        <TextField fx:id="firstNameField" promptText="First Name" prefWidth="140"/>
+        <TextField fx:id="lastNameField" promptText="Last Name" prefWidth="140"/>
+        <Button fx:id="saveButton" text="Save Student" onAction="#handleSaveStudent"
+                style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold;"/>
+    </HBox>
+
+    <!-- Data Table -->
+    <TableView fx:id="studentTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colReg" text="Reg Number" prefWidth="130"/>
+            <TableColumn fx:id="colFirst" text="First Name" prefWidth="150"/>
+            <TableColumn fx:id="colLast" text="Last Name" prefWidth="150"/>
+            <TableColumn fx:id="colEmail" text="Email" prefWidth="220"/>
+        </columns>
+    </TableView>
+
+    <Label fx:id="statusLabel" text="Ready" textFill="blue"/>
+</VBox>
